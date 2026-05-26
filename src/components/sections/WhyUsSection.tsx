@@ -33,7 +33,7 @@ export function WhyUsSection() {
     <section className="bg-background pb-10 pt-6 md:pb-12 md:pt-8">
       <div className="mx-auto max-w-7xl space-y-6 px-4 sm:px-6 lg:px-10 xl:px-12">
         <SectionHeading
-          badge="Why SocietyConnect"
+          badge="Why MySocietyHub"
           title="Purpose-built for Indian gated communities"
           description="Not a generic property CRM — a governed stack for security, finance, and community operations."
         />

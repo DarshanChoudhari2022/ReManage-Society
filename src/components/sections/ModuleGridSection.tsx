@@ -59,7 +59,7 @@ function StaticPhoneMock({
         <div className="bg-gradient-to-b from-slate-50 to-white px-4 pb-28 pt-3">
           <div className="mb-3 flex justify-between text-[10px] font-semibold text-slate-500">
             <span>9:41</span>
-            <span className="rounded-full bg-slate-900/5 px-2.5 py-0.5">SocietyConnect</span>
+            <span className="rounded-full bg-slate-900/5 px-2.5 py-0.5">MySocietyHub</span>
           </div>
 
           <div className="flex items-center gap-3 rounded-2xl bg-white p-3 shadow-sm ring-1 ring-slate-100">
@@ -138,7 +138,7 @@ export function ModuleGridSection() {
             Full-spectrum society management
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
-            SocietyConnect — your resident super-app. Tap any module to read more, or explore
+            MySocietyHub — your resident super-app. Tap any module to read more, or explore
             everything on the features page.
           </p>
           <Link

@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/sections/SectionHeading";
 const testimonials = [
   {
     quote:
-      "Moving from manual ledgers to SocietyConnect simplified collections. Residents pay via UPI and treasurers see status without chasing every flat.",
+      "Moving from manual ledgers to MySocietyHub simplified collections. Residents pay via UPI and treasurers see status without chasing every flat.",
     name: "Rajesh K. Mehta",
     role: "Treasurer",
     place: "Royal Heights · Pune",

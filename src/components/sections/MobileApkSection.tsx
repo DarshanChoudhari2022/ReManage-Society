@@ -24,7 +24,7 @@ export function MobileApkSection() {
         >
           <p className="text-eyebrow text-primary">Mobile app</p>
           <h2 className="font-heading text-2xl font-semibold text-slate-900 sm:text-3xl">
-            Install SocietyConnect on Android today
+            Install MySocietyHub on Android today
           </h2>
           <p className="text-sm leading-relaxed text-slate-600">
             Push-friendly approvals, dues, and notices for residents and committee members. Google

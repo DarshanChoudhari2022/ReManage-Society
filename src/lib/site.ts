@@ -4,13 +4,13 @@ const appBase = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "");
 const fallbackAppPath = "/contact";
 
 export const siteConfig = {
-  name: "SocietyConnect",
+  name: "MySocietyHub",
   legalName: "Society Connect",
   tagline: "Smart society management for residents and committees",
   description:
     "Approve visitors, pay maintenance, and keep notices, complaints, and records in one secure place — without gate calls or scattered group chats.",
   contact: {
-    email: "demo@societyconnect.co",
+    email: "demo@MySocietyHub.co",
     phone: "+91 98765 43210",
     whatsapp: "https://wa.me/911800181800",
     whatsappDisplay: "+91-1800181800",

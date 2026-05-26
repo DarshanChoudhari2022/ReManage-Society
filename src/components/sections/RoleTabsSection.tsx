@@ -23,7 +23,7 @@ export function RoleTabsSection() {
         <SectionHeading
           badge="Built for your role"
           title="Residents, owners, and committees — one platform"
-          description="Pick a perspective to see the workflows SocietyConnect supports out of the box."
+          description="Pick a perspective to see the workflows MySocietyHub supports out of the box."
           className="max-w-2xl"
         />
 
