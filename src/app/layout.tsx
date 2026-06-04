@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://remanagesociety.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://re-manage-society.vercel.app"),
   title: `${siteConfig.name} — Society Management for Residents & Committees`,
   description: siteConfig.description,
   icons: {
@@ -43,11 +43,20 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — Society operations without the chaos`,
     description: siteConfig.description,
     siteName: siteConfig.name,
+    images: [
+      {
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: `${siteConfig.name} Logo`,
+      },
+    ],
   },
   twitter: {
     card: "summary",
     title: `${siteConfig.name} — Society operations without the chaos`,
     description: siteConfig.description,
+    images: ["/logo.png"],
   },
 };
 
