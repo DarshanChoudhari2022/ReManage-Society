@@ -23,10 +23,19 @@ function PainPointCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-32px" }}
       transition={{ delay: index * 0.06, duration: 0.35 }}
-      whileHover={{ y: -3 }}
-      className="group flex h-full flex-col rounded-xl border border-slate-200/80 bg-white p-4 transition-[border-color,box-shadow] duration-200 hover:border-primary/20 hover:shadow-sm sm:p-5"
+      whileHover={{ y: -5, scale: 1.01 }}
+      whileTap={{ scale: 0.99 }}
+      className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white p-4 transition-[border-color,box-shadow] duration-300 hover:border-primary/25 hover:shadow-lg hover:shadow-orange-500/10 sm:p-5"
     >
-      <Icon className="h-4 w-4 text-primary" strokeWidth={2} aria-hidden />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-xl opacity-0 ring-1 ring-primary/25 transition-opacity duration-300 group-hover:opacity-100"
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px -translate-x-full bg-gradient-to-r from-transparent via-primary to-transparent transition-transform duration-700 group-hover:translate-x-full"
+      />
+      <Icon className="relative h-4 w-4 text-primary transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" strokeWidth={2} aria-hidden />
       <h3 className="mt-3 font-heading text-sm font-semibold leading-snug text-slate-900">
         {title}
       </h3>

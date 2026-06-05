@@ -26,28 +26,50 @@ export function FinalCtaSection() {
               Ready to simplify society operations?
             </h2>
             <p className="text-sm leading-relaxed text-white/90 sm:text-base">
-              Book a walkthrough for your committee or download the resident app. Plans start at just ₹10/flat/month.
+              Book a walkthrough for your committee or download the resident app. Plans start at just Rs. 10/flat/month.
             </p>
           </div>
 
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:min-w-[320px]">
-            <Button asChild size="lg" variant="secondary" className="w-full justify-center">
-              <Link href="/contact">
-                Book a demo
-                <ArrowRight />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="ghost"
-              className="w-full justify-center border border-white/25 text-white hover:bg-white/10 hover:text-white"
+            <motion.div
+              whileHover={{ y: -3, scale: 1.015 }}
+              whileTap={{ scale: 0.985 }}
+              transition={{ type: "spring", stiffness: 420, damping: 28 }}
+              className="group relative overflow-hidden rounded-full"
             >
-              <a href={siteConfig.links.apk}>
-                <Download />
-                Download resident app
-              </a>
-            </Button>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-x-4 top-0 z-10 h-px -translate-x-full bg-gradient-to-r from-transparent via-orange-400 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+              />
+              <Button asChild size="lg" variant="secondary" className="w-full justify-center transition-shadow duration-300 group-hover:shadow-xl group-hover:shadow-slate-950/15">
+                <Link href="/contact">
+                  Book a demo
+                  <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -3, scale: 1.015 }}
+              whileTap={{ scale: 0.985 }}
+              transition={{ type: "spring", stiffness: 420, damping: 28 }}
+              className="group relative overflow-hidden rounded-full"
+            >
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-x-4 top-0 z-10 h-px -translate-x-full bg-gradient-to-r from-transparent via-white to-transparent transition-transform duration-700 group-hover:translate-x-full"
+              />
+              <Button
+                asChild
+                size="lg"
+                variant="ghost"
+                className="w-full justify-center border border-white/25 text-white transition-shadow duration-300 hover:bg-white/10 hover:text-white group-hover:shadow-lg group-hover:shadow-slate-950/10"
+              >
+                <a href={siteConfig.links.apk}>
+                  <Download className="transition-transform duration-300 group-hover:-translate-y-0.5" />
+                  Download resident app
+                </a>
+              </Button>
+            </motion.div>
           </div>
         </motion.div>
       </div>

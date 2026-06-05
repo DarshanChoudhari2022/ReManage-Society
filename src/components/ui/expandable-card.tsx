@@ -161,39 +161,65 @@ export function ExpandableFeatureCard({
   onSelect,
   className,
   style,
+  sharedLayout = true,
 }: {
   item: ExpandableCardItem;
   layoutId: string;
   onSelect: (item: ExpandableCardItem) => void;
   className?: string;
   style?: CSSProperties;
+  sharedLayout?: boolean;
 }) {
   const Icon = item.icon;
+  const iconClasses = `inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br transition-transform duration-300 group-hover:rotate-3 group-hover:scale-105 md:h-10 md:w-10 ${item.accent}`;
+  const titleClasses = "font-heading text-[0.8125rem] md:text-[0.9375rem] font-semibold leading-snug text-slate-900";
 
   return (
-    <button
+    <motion.button
       type="button"
       onClick={() => onSelect(item)}
       style={style}
-      className={`relative w-full md:w-max md:min-w-[12rem] md:max-w-[19.25rem] cursor-pointer rounded-xl border text-left shadow-sm transition-shadow hover:shadow-md ${item.subtleBg} ${className ?? ""}`}
+      whileHover={{ y: -5, scale: 1.015 }}
+      whileTap={{ scale: 0.985 }}
+      transition={{ type: "spring", stiffness: 420, damping: 28 }}
+      className={`group relative w-full overflow-hidden md:w-max md:min-w-[12rem] md:max-w-[19.25rem] cursor-pointer rounded-xl border text-left shadow-sm transition-shadow hover:shadow-lg ${item.subtleBg} ${className ?? ""}`}
     >
+      <motion.span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-xl opacity-0 ring-1 ring-orange-400/40 transition-opacity duration-300 group-hover:opacity-100"
+      />
+      <motion.span
+        aria-hidden
+        initial={false}
+        className="pointer-events-none absolute inset-x-0 top-0 h-px -translate-x-full bg-gradient-to-r from-transparent via-orange-400 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+      />
       <div className="relative flex items-center gap-2.5 px-3 py-2.5 md:gap-3 md:px-3.5 md:py-3">
-        <motion.div
-          layoutId={`header-${item.id}-${layoutId}`}
-          transition={layoutFast}
-          className={`inline-flex h-8 w-8 md:h-10 md:w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ${item.accent}`}
-        >
-          <Icon className="h-[18px] w-[18px] text-white" strokeWidth={2} aria-hidden />
-        </motion.div>
-        <motion.span
-          layoutId={`title-${item.id}-${layoutId}`}
-          transition={layoutFast}
-          className="font-heading text-[0.8125rem] md:text-[0.9375rem] font-semibold leading-snug text-slate-900"
-        >
-          {item.title}
-        </motion.span>
+        {sharedLayout ? (
+          <motion.div
+            layoutId={`header-${item.id}-${layoutId}`}
+            transition={layoutFast}
+            className={iconClasses}
+          >
+            <Icon className="h-[18px] w-[18px] text-white" strokeWidth={2} aria-hidden />
+          </motion.div>
+        ) : (
+          <div className={iconClasses}>
+            <Icon className="h-[18px] w-[18px] text-white" strokeWidth={2} aria-hidden />
+          </div>
+        )}
+        {sharedLayout ? (
+          <motion.span
+            layoutId={`title-${item.id}-${layoutId}`}
+            transition={layoutFast}
+            className={titleClasses}
+          >
+            {item.title}
+          </motion.span>
+        ) : (
+          <span className={titleClasses}>{item.title}</span>
+        )}
       </div>
-    </button>
+    </motion.button>
   );
 }
 
@@ -212,11 +238,18 @@ export function ExpandableQuickAction({
     <motion.button
       type="button"
       onClick={() => onSelect(item)}
-      className="group relative flex min-w-0 flex-1 flex-col items-center gap-1 rounded-xl px-1.5 py-2 transition-colors hover:bg-slate-50"
+      whileHover={{ y: -3 }}
+      whileTap={{ scale: 0.94 }}
+      transition={{ type: "spring", stiffness: 500, damping: 28 }}
+      className="group relative flex min-w-0 flex-1 flex-col items-center gap-1 overflow-hidden rounded-xl px-1.5 py-2 transition-colors hover:bg-slate-50"
     >
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-2 top-0 h-px -translate-x-full bg-gradient-to-r from-transparent via-orange-400 to-transparent transition-transform duration-500 group-hover:translate-x-full"
+      />
       <motion.div layoutId={`header-${item.id}-${layoutId}`} transition={layoutFast} className="relative">
         <span
-          className={`flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br sm:h-10 sm:w-10 ${item.accent}`}
+          className={`flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br transition-transform duration-300 group-hover:rotate-3 group-hover:scale-105 sm:h-10 sm:w-10 ${item.accent}`}
         >
           <Icon className="h-4 w-4 text-white sm:h-5 sm:w-5" strokeWidth={2} aria-hidden />
         </span>
@@ -232,6 +265,11 @@ export function ExpandableQuickAction({
 export function quickActionToCard(
   action: (typeof import("@/lib/content").appQuickActions)[number]
 ): ExpandableCardItem {
+  const shortLabels: Record<string, string> = {
+    marketplace: "Market",
+    documents: "Docs",
+  };
+
   return {
     id: `quick-${action.id}`,
     title: action.title,
@@ -239,7 +277,7 @@ export function quickActionToCard(
     icon: action.icon,
     accent: action.accent,
     subtleBg: "border-slate-200/90 bg-white",
-    shortLabel: action.label,
+    shortLabel: shortLabels[action.id] ?? action.label,
   };
 }
 

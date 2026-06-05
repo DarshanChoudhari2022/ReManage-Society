@@ -170,7 +170,8 @@ export function ModuleGridSection() {
                   item={showcaseToCard(feature)}
                   layoutId={layoutId}
                   onSelect={setActive}
-                  className="!min-w-0 !max-w-none w-full"
+                  sharedLayout={false}
+                  className="!min-w-0 !max-w-none min-h-[72px] w-full"
                 />
               </motion.div>
             ))}
